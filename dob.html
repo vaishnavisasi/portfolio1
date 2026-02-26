@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Age Calculator</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px 15px;
+            width: 100%;
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #1a5edb;
+        }
+
+        #print {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #444;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Age Calculator</h2>
+        <input type="date" id="dob">
+        <button onclick="calculate()">Calculate Age</button>
+        <p id="print"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            var dob = document.getElementById("dob").value;
+
+            if (dob === "") {
+                document.getElementById("print").innerHTML = "Please select a date";
+                return;
+            }
+
+            const bd = new Date(dob);
+            const today = new Date();
+            const difftime = today - bd;
+            const diffDays = Math.floor(difftime / (1000 * 60 * 60 * 24));
+
+            document.getElementById("print").innerHTML =
+                "You have lived for approximately " + diffDays + " days.";
+        }
+    </script>
+
+</body>
+</html>
